@@ -1,4 +1,5 @@
-import { Range, TextDocument, TextEditor, window, workspace } from 'vscode';
+import { Range, TextDocument, TextEditor, window } from 'vscode';
+import * as config from './config';
 
 export const getExpressionUnderCursor = (
   getMultiline: boolean
@@ -109,8 +110,7 @@ const getEndLineNumber = (
 };
 
 const feedback = (range: Range): void => {
-  const configuration = workspace.getConfiguration('tcpure');
-  const flashColor = configuration.get<string>('flashDecoration', '#00ff00');
+  const flashColor = config.feedbackColor();
 
   const flashDecorationType = window.createTextEditorDecorationType({
     backgroundColor: flashColor,
