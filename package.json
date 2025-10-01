@@ -2,7 +2,7 @@
   "name": "vscode-tidalcycles",
   "displayName": "TidalCycles for VSCode",
   "description": "TidalCycles support in VSCode",
-  "version": "1.4.0",
+  "version": "2.0.3-CUSTOM",
   "publisher": "tidalcycles",
   "icon": "images/icon128.png",
   "repository": "https://github.com/tidalcycles/vscode-tidalcycles",
@@ -282,7 +282,8 @@
     "test:integration": "vscode-test",
     "prepare": "husky",
     "pretty-quick-staged": "pretty-quick --staged",
-    "lint": "eslint --ext .ts"
+    "lint": "eslint --ext .ts",
+    "package": "vsce package"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
@@ -299,6 +300,7 @@
     "@typescript-eslint/parser": "^8.29.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.6.2",
     "chai": "^4.3.7",
     "eslint": "^9.23.0",
     "globals": "^16.0.0",
@@ -326,5 +328,6 @@
   "vsce": {
     "dependencies": true,
     "yarn": false
-  }
+  },
+  "packageManager": "npm@11.6.1+sha512.ee20d21c3a2ea7ab8c409dfbc96ae17ea71b3211745047c645aa7a36ff9a29072b2095e50a2d9c29b8fbe5606688795cc2c402cbf534cc4c0365d031e87fd56b"
 }
