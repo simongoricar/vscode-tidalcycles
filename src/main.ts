@@ -1,4 +1,4 @@
-import { commands, ExtensionContext } from 'vscode';
+import { commands, ExtensionContext, languages } from 'vscode';
 import { quit } from './repl';
 import { evalCommand, evalMultiCommand, hushCommand } from './evalCommands';
 import { TidalLanguageHelpProvider } from './codehelp';
@@ -108,6 +108,16 @@ export const activate = (context: ExtensionContext) => {
     toggleMutes.toggleMute16
   );
 
+  const hoverProviderDisposable = languages.registerHoverProvider(
+    { scheme: 'file', language: 'haskell' },
+    hoverAndMarkdownProvider
+  );
+
+  const completionProviderDisposable = languages.registerCompletionItemProvider(
+    { scheme: 'file', language: 'haskell' },
+    hoverAndMarkdownProvider
+  );
+
   context.subscriptions.push(
     evalCommandRegistered,
     evalMultiCommandRegistered,
@@ -128,6 +138,8 @@ export const activate = (context: ExtensionContext) => {
     toggleMute14CommandRegistered,
     toggleMute15CommandRegistered,
     toggleMute16CommandRegistered,
+    hoverProviderDisposable,
+    completionProviderDisposable,
     ...hoverAndMarkdownProvider.createCommands()
   );
 };
